@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "nbm-forum",
+    "slug": "nbm-forum",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "src/assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "src/assets/splashScreen.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#6537FF"
+    },
+ 
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "src/assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "src/assets/favicon.png"
+    }
+  }
+}
