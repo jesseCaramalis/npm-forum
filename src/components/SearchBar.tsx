@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
@@ -6,8 +6,11 @@ interface SearchBarProps {
   onSearch: (query: string) => void;
 }
 
+// this component is a styled placeholder for a search bar
+// it currently needs to have the logic implemented to search posts.
+
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [query, setQuery] = React.useState('');
+  const [query, setQuery] = useState('');
 
   const handleSearch = () => {
     onSearch(query);

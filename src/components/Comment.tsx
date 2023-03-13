@@ -3,6 +3,12 @@ import { TextInput } from 'react-native-gesture-handler';
 import { CommentComponentProps } from '../../types/comment';
 import parseDate from '../utils/parseDate';
 
+//this is a component that renders a single comment, used in the CommentComponent which renders all comments.
+//it accepts a comment and level prop. The level prop is used to determine if the comment is a reply or not.
+//if the comment is a reply, it will be indented and have a line to the left of it.
+
+//TO TEST: replies can only be made to a level of 3, so shouldn't have issue with marginLeft increasing to the point comments are no longer visible/break the layout.
+
 const Comment: React.FC<CommentComponentProps> = ({ comment, level }) => {
   const [day, month, year] = parseDate(comment.createdAt);
 

@@ -7,8 +7,17 @@ type TagBarProps = {
   selectedTags?: string[];
 };
 
-const TagBar: React.FC<TagBarProps> = ({ tags, onTagSelect, selectedTags = []}) => {
+// this component renders a horizontal scrollable list of tags
+// it accepts an array of tags and a function to handle tag selection, as well as an array of selected tags (by default empty)
+// when rendered on the PostComponent, it receives the tags from that post.
+// on the FeedScreen, it receives all tags using the fetchFilterBarTags function
+// when selected, tags are passed to the onTagSelect function, which is used to filter the posts in the FeedScreen
 
+const TagBar: React.FC<TagBarProps> = ({ tags, onTagSelect, selectedTags = []}) => {
+  
+  // this function handles tag selection
+  // if the tag is already selected, it is removed from the array of selected tags
+  // if the tag is not selected, it is added to the array of selected tags
   const handleTagSelect = (tag: string) => {
     if (onTagSelect) {
       const isSelected = selectedTags?.includes(tag);

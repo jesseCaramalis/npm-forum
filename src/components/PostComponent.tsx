@@ -5,7 +5,13 @@ import { PostComponentProps } from '../../types/post';
 import TagBar from './TagBar';
 import parseDate from '../utils/parseDate';
 
+// this component is used to render a post in the FeedScreen and PostScreen
+// it is passed a post object as a prop, and a function to be called when the post is pressed (which will navigate to the PostScreen with that specific post).
+// it also receives the selectedTags from the FeedScreen, which is used to determine which tags should be highlighted in the TagBar component.
+
 const PostComponent: React.FC<PostComponentProps> = ({ post, onPress, selectedTags }) => {
+
+  // destructuring the post prop 
   const { id, createdAt, title, tags, content, comments } = post;
   const { firstName, lastName, email } = post.user;
 

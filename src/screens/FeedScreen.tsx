@@ -9,11 +9,17 @@ import TagBar from '../components/TagBar';
 import { fetchPosts } from '../api/getPosts';
 import { fetchFilterBarTags } from '../api/getTags';
 
+// this screen renders a scrollable list of posts, with a search bar and tag filter bar at the top.
+// posts are fetched with an initial page number of 1 and a limit of 10 posts per page.
+// when the bottom of the list is reached, the page number is incremented and the next 10 posts are fetched.
+// the previous posts are not cleared from state, so the list will grow as the user scrolls down.
+
+// current bug is the pressable post components are too sensitive, and the user can accidentally press a post when scrolling
+
 const FeedScreen: React.FC<FeedScreenProps> = ({ navigation }) => {
   const [loadedPosts, setLoadedPosts] = useState<Array<PostInterface>>([]);
   const [totalPosts, setTotalPosts] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
-  const [token, setToken] = useState('');
   const [loading, setLoading] = useState(false);
   const [tags, setTags] = useState<{ name: string }[]>([]);
   const [selectedTags, setSelectedTags]= useState<string[]>([]);
@@ -45,8 +51,8 @@ const FeedScreen: React.FC<FeedScreenProps> = ({ navigation }) => {
     }
   }
 
-  //call fetchPosts with the selectedTags being passed, function will append the tags to the url and fetch only those posts
-  //instead of fetching all posts and filtering them
+  // call fetchPosts with the selectedTags being passed, function will append the tags to the url and fetch only those posts, instead of fetching all posts and filtering them
+
   const loadPosts = async () => {
     setLoading(true);
     try {
@@ -60,6 +66,9 @@ const FeedScreen: React.FC<FeedScreenProps> = ({ navigation }) => {
       setLoading(false);
     }
   };
+
+  // renders a post component for each post in the loadedPosts array
+  // if the selectedTags array is not empty, the post will only be rendered if it has a selected tag
 
   const renderPost = ({ item }: { item: PostInterface }) => {
     if (selectedTags.length > 0) {
@@ -76,6 +85,8 @@ const FeedScreen: React.FC<FeedScreenProps> = ({ navigation }) => {
       </TouchableOpacity>
     );
   };
+ // handles selecting and deselecting tags in the tag filter bar
+ // when a tag is selected, the selectedTags array is updated and the page number is reset to 1
 
   const handleTagSelect = (tags: string[]) => {
     console.log(tags)
@@ -93,7 +104,7 @@ const FeedScreen: React.FC<FeedScreenProps> = ({ navigation }) => {
       setPageNumber((prevPageNumber) => prevPageNumber + 1);
     }
   };
-
+  
     useEffect(() => {
     if (pageNumber > 1) {
       loadPosts();
@@ -107,8 +118,8 @@ const FeedScreen: React.FC<FeedScreenProps> = ({ navigation }) => {
         <TagBar tags={tags} onTagSelect={handleTagSelect} selectedTags={selectedTags}/>
       </View>
       <SafeAreaView style={styles.postContainer}>
-      {loading ? (
-        <ActivityIndicator style={styles.loadingSpinner} size="large" />
+      {loading && (pageNumber == 1) ? (
+        <ActivityIndicator style={styles.loadingSpinner} color="#6537FF" size="large" />
       ) : (
         <FlatList
           data={loadedPosts}
