@@ -20,7 +20,9 @@ const Comment: React.FC<CommentComponentProps> = ({ comment, level }) => {
           <Text style={styles.userName}>
             {comment.user.firstName + ' ' + comment.user.lastName + ' • '}
           </Text>
-          <Text style={styles.datePosted}>{`${day}-${month}-${year}`}</Text>
+          <Text style={styles.datePosted}>
+            {`${day}-${month}-${year}`}
+          </Text>
         </View>
         <Text style={styles.content}>{comment.text}</Text>
         <TextInput style={styles.commentForm} placeholder="Write a reply ..." />

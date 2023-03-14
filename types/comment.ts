@@ -11,7 +11,7 @@ export interface CommentInterface {
         email: string;
         telephone: string;
       };
-    comments: []
+    comments: number[]
   }
 
 export interface CommentComponentProps {
