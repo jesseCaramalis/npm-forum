@@ -30,8 +30,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
     <View style={styles.container}>
       <Image style={styles.image} source={require('../assets/login-bg.png')} />
       <View style={styles.intro}>
-        <Text style={styles.title}>Welcome to {'\n'}the NBM Forum</Text>
-        <Text style={styles.subtitle}>Time to get all the answers you need in a forum made for designers and developers!</Text>
+        <Text style={styles.title}>Welcome to {'\n'}the Src Forum</Text>
+        <Text style={styles.subtitle}>A place for developers to ask, share and create together</Text>
         <View style={styles.form}>
           <TextInput
             value={email}
@@ -47,7 +47,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
             style={styles.input}
           />
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Jump In!</Text>
+            <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
         </View>
       </View>
