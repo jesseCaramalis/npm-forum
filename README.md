@@ -1,5 +1,7 @@
 # npm-forum
-This is a React Native forum application.
+This is a React Native forum application, built over a two day period as part of an online hackathon challenge.
+
+As my first React Native build, this challenge had me rapidly upskilling and learning the basics of mobile development, as well as how my skills as React developer transfer over into this space.
 
 ## To Do Features
 
