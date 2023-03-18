@@ -5,7 +5,7 @@
 //this would allow us to edit posts and comments only made by the user, and create useful features such as a profile page, or a list of posts made by the user.
 
 export const postLogin = async (email: String, password: String) => {
-    const response = await fetch('http://3.26.31.47:3000/auth/login', {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

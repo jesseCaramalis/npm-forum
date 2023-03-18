@@ -26,7 +26,7 @@ const CommentComponent: React.FC<CommentComponentProps> = ({ post }) => {
     const fetchComments = async (commentId?: number) => {
       try {
         const token = await SecureStore.getItemAsync('jwt');
-        const url = `http://3.26.31.47:3000/posts/${post.id}/comments${commentId ? '/' + commentId : ''}?page=1&limit=100`;
+        const url = `${process.env.REACT_APP_BASE_URL}/posts/${post.id}/comments${commentId ? '/' + commentId : ''}?page=1&limit=100`;
         const response = await fetch(url, {
           headers: { Authorization: `Bearer ${token}` },
         });
