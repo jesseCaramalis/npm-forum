@@ -19,3 +19,4 @@ As my first React Native build, this challenge had me rapidly upskilling and lea
 - Rework comment system - currently all comments for a post are fetched and stored in state on screen load. Fine for small scale but with increased use will slow down.
   - load initial comment and ~3 replies, then have expand button to load the rest.
 - Better abstraction with styles, parts of FeedScreen, and types.
+- Abstracting fetchComments to a seperate file in /api currently breaks comment functionality
